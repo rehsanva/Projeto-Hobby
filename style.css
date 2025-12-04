@@ -1,0 +1,775 @@
+/* Estilos gerais do cabeçalho e menu */
+:root{
+	--menu-brown: #9F512E;
+	--menu-hover-yellow: #FFD54F;
+	--menu-text: #FFF8EE;
+	--menu-height: 64px;
+}
+
+*{box-sizing:border-box}
+body{font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; margin:0; color:#222; background:#E9C3A0}
+
+.cabecalho{
+	display:block;
+}
+
+.menu-principal .logo{
+	font-weight:700;
+	font-size:1.05rem;
+	color:var(--menu-text);
+	padding:0 0.5rem;
+	display:flex;
+	align-items:center;
+}
+
+.menu-principal{
+	background:var(--menu-brown);
+	width:100%;
+	border-radius:0; /* sem arredondamento na barra */
+	padding:8px 12px;
+	box-shadow:0 3px 8px rgba(0,0,0,0.12);
+	position:fixed; /* barra fixa no topo */
+	top:0;
+	left:0;
+	right:0;
+	height:var(--menu-height);
+	z-index:9999;
+	display:flex;
+	align-items:center;
+	justify-content:space-between;
+	gap:0.5rem;
+}
+
+.menu-principal ul{
+	margin:0;
+	padding:0;
+	display:flex;
+	gap:0.25rem;
+	align-items:center;
+	list-style:none;
+	flex-wrap:wrap;
+}
+
+.menu-principal a{
+	display:inline-block;
+	color:var(--menu-text);
+	text-decoration:none;
+	padding:0.45rem 0.65rem;
+	font-size:0.95rem;
+	transition:color .15s ease, background-color .12s ease, transform .08s ease;
+	line-height:1;
+	white-space:nowrap; /* não deixa o texto quebrar */
+	position:relative;
+}
+
+/* underline animado */
+.menu-principal a::after{
+	content:'';
+	position:absolute;
+	left:12%;
+	right:12%;
+	height:3px;
+	bottom:-6px;
+	background:var(--menu-hover-yellow);
+	transform:scaleX(0);
+	transform-origin:left center;
+	transition:transform .18s ease, opacity .12s;
+	opacity:0;
+	border-radius:2px;
+}
+
+.menu-principal a:hover::after,
+.menu-principal a:focus::after{
+	transform:scaleX(1);
+	opacity:1;
+}
+
+.menu-principal a:hover,
+.menu-principal a:focus{
+	color:var(--menu-hover-yellow);
+	background:rgba(255,255,255,0.04);
+	transform:translateY(-1px);
+}
+
+/* Acessibilidade: foco visível */
+.menu-principal a:focus-visible{outline:3px solid rgba(255,213,79,0.18); outline-offset:3px}
+
+/* Mobile: torna o menu mais compacto e empilha quando necessário */
+@media (max-width:800px){
+	.menu-principal{padding:8px 10px}
+	.menu-principal ul{gap:0.15rem}
+	.menu-principal a{font-size:0.9rem; padding:0.35rem 0.5rem}
+}
+
+@media (max-width:520px){
+	/* em telas muito pequenas, centraliza o logo e empilha os itens do menu em duas linhas */
+	.menu-principal{
+		flex-direction:column; align-items:stretch; gap:6px; padding:10px;
+		border-radius:0;
+	}
+	.menu-principal .logo{justify-content:center; padding:6px 0}
+	.menu-principal ul{justify-content:center; flex-wrap:wrap}
+}
+
+/* Pequenas melhorias visuais para o resto da página */
+/* remover padding do main para que seções de largura total (hero) encostem nas bordas */
+
+/* desloca o conteúdo para não ficar coberto pelo menu fixo */
+main{padding:0; margin-top:var(--menu-height)}
+
+/* manter espaçamento para seções que não são hero */
+main > section:not(.hero){
+	padding:1rem;
+}
+.card{background:#fff;padding:1rem;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,0.06);margin:0.8rem 0}
+
+#hero {
+    
+	background: #573013; /* cor solicitada */
+	color: var(--menu-text);
+	margin: 0; /* sem margens externas */
+	padding: 3rem 0; /* sem padding horizontal para não mostrar bordas brancas */
+	text-align: center; /* centraliza o texto */
+}
+
+
+#hero .hero-conteudo{
+	background: transparent; /* garante que a div não apareça */
+	margin: 0;
+	padding: 0;
+	max-width: 900px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#Sero .hero-conteudo p{
+	margin: 0; /* sem margens na paragraph */
+	color: var(--menu-text);
+	font-size: 1.2rem;
+	line-height: 1.7;
+	font-weight: 400;
+	letter-spacing: 0.2px;
+}
+
+/* Estilos para a seção de cabeçalho (id="cabecalho") */
+#cabecalho h1,
+#cabecalho h2{
+	text-align: center; /* títulos centralizados */
+	margin: 0.25rem 0;
+}
+
+/* parágrafos alinhados à esquerda com margem consistente */
+#cabecalho p{
+	text-align: left;
+	/* largura restrita a 25% da viewport */
+	width: 25vw;
+	max-width: 25vw;
+	margin: 0.6rem 0 0.6rem 10%; /* margem esquerda para alinhar com começo das barras */
+	color: #222; /* texto legível sobre o fundo do body */
+}
+
+@media (max-width:900px){
+	/* em telas pequenas os parágrafos ocupam mais largura para legibilidade */
+	#cabecalho p{
+		width: 95%;
+		max-width: 95%;
+		margin: 0.6rem auto;
+	}
+}
+
+/* checkbox hack: esconder o checkbox e controlar a reveal box via CSS apenas */
+.toggle-cabecalho{display:none}
+
+/* posição relativa para posicionar a caixa reveal grudada ao h1 */
+#cabecalho{position:relative}
+.cabecalho-label{display:inline-block; cursor:pointer}
+
+.reveal{
+	position:absolute;
+	left:50%;
+	transform:translateX(-50%);
+	top:calc(100% + 8px); /* logo abaixo do h1 */
+	width:min(60vw,680px);
+	background:#ffffff;
+	color:#222;
+	border-radius:6px;
+	box-shadow:0 8px 28px rgba(0,0,0,0.12);
+	overflow:hidden;
+	max-height:0;
+	opacity:0;
+	transition: max-height .28s ease, opacity .2s ease, transform .22s ease;
+	transform-origin:top center;
+	padding:0 1rem; /* padding inicial (aparece quando aberto) */
+}
+
+
+/* Transformar o H1 de #hobbies numa elipse central, simulando uma barra de pesquisa */
+
+#hobbies{
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	justify-content:center;
+	min-height:auto;
+	padding:1.5rem 1rem;
+	text-align:center; /* centraliza o texto também */
+	background:#E9C3A0;
+	position:relative;
+	overflow:hidden;
+}
+
+/* Header da seção hobbies */
+.hobbies-header{
+	position:relative;
+	z-index:2;
+	margin-bottom:1.5rem;
+	color:#fff;
+}
+
+.hobbies-header h2{
+	margin:0;
+	font-size:2rem;
+	font-weight:700;
+	letter-spacing:-0.5px;
+	text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+	margin-bottom:0.5rem;
+}
+
+.hobbies-header p{
+	margin:0;
+	font-size:1.05rem;
+	color:rgba(255,255,255,0.95);
+	opacity:0.9;
+	letter-spacing:0.2px;
+}
+
+#hobbies > div{
+	display:flex;
+	flex-direction:column;
+	align-items:center; /* centraliza os filhos */
+}
+
+/* Esconde o checkbox */
+.toggle-hobbies{
+	display:none;
+}
+
+/* Container para o label e conteúdo */
+.hobbies-container{
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	position:relative;
+	margin:0.75rem 0;
+}
+
+/* Label clicável (h1) */
+.hobbies-label{
+	cursor:pointer;
+	display:block;
+}
+
+.hobbies-label h1:first-of-type{
+	display:inline-block;
+	position:relative; /* para o ícone pseudo-elemento */
+	margin:1.2rem 0; /* centralizado pelo container flex */
+	padding:0.7rem 1.5rem 0.7rem 3rem; /* espaço à esquerda para o ícone */
+	background:#ffffff; /* barra clara sobre o fundo */
+	color:#222;
+	border-radius:999px; /* elipse */
+	box-shadow: 0 10px 30px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.6);
+	font-size:1.3rem;
+	line-height:1;
+	text-align:left; /* texto dentro da barra alinhado à esquerda (como pesquisa) */
+	max-width:80vw;
+	width:80vw;
+	transition: box-shadow 0.3s ease, transform 0.3s ease;
+	font-weight:700;
+	letter-spacing:0.3px;
+}
+
+.hobbies-label h1:first-of-type::before{
+	content: "🔍"; /* ícone simples */
+	position:absolute;
+	left:0.9rem;
+	top:50%;
+	transform:translateY(-50%);
+	font-size:1.1rem;
+	opacity:0.85;
+	transition: opacity 0.3s ease;
+}
+
+.hobbies-label:hover h1:first-of-type::before{
+	opacity:1;
+}
+
+/* Efeito ao passar o mouse */
+.hobbies-label:hover h1:first-of-type{
+	box-shadow: 0 12px 35px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.8);
+	transform: translateY(-4px);
+	background: #fafafa;
+}
+
+/* Conteúdo (parágrafo) escondido por padrão */
+.hobbies-content{
+	max-height:0;
+	opacity:0;
+	overflow:hidden;
+	width:80vw;
+	max-width:80vw;
+	background:#ffffff;
+	border-radius:0 0 8px 8px;
+	box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+	transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
+	padding: 0 1.2rem;
+}
+
+.hobbies-content p{
+	margin:0;
+	color:#222;
+	font-size:1rem;
+	line-height:1.6;
+}
+
+/* Quando o checkbox está marcado, mostra o conteúdo */
+.toggle-hobbies:checked + .hobbies-container .hobbies-content{
+	max-height:500px; /* altura máxima para a animação */
+	opacity:1;
+	padding: 1.2rem;
+}
+
+#toggle-hobbies-2:checked + .hobbies-container .hobbies-content{
+	max-height:1200px; /* altura máxima para a animação - maior para acomodar os 3 itens */
+	opacity:1;
+	padding: 1.2rem;
+}
+
+@media (max-width:720px){
+	.hobbies-header h2{
+		font-size:1.5rem;
+		margin-bottom:0.3rem;
+	}
+	
+	.hobbies-header p{
+		font-size:0.95rem;
+	}
+	
+	.hobbies-label h1:first-of-type{
+		width:95vw; 
+		max-width:95vw; 
+		font-size:1.1rem; 
+		padding-left:2.8rem;
+	}
+	
+	.hobbies-content{
+		width:95vw;
+		max-width:95vw;
+	}
+}
+
+/* Estilo para o container da lista de hobbies especiais */
+.hobbies-list-container{
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	width:100%;
+	padding:2rem 1rem;
+}
+
+/* Estilo para os itens da lista dentro do hobbies-content */
+.hobbies-item{
+	margin-top:1rem;
+	border-left:4px solid #9F512E;
+	background:#f5f5f5;
+	border-radius:4px;
+	overflow:hidden;
+	transition: all 0.2s ease;
+}
+
+.hobbies-item:hover{
+	background:#efefef;
+	border-left-color:#6B3E25;
+}
+
+.hobbies-title{
+	background:#9F512E;
+	color:#fff;
+	padding:0.7rem 1rem;
+	font-weight:600;
+	font-size:0.95rem;
+	letter-spacing:0.3px;
+}
+
+.hobbies-item p{
+	margin:0;
+	padding:1rem;
+	color:#222;
+	font-size:0.95rem;
+	line-height:1.5;
+}
+
+
+.rodape {
+  background-color: #8b4c2f;
+  color: #f5e6d3;
+  text-align: center;
+  padding: 25px 15px;
+  font-size: 0.95rem;
+  margin-top: 0; 
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.rodape p {
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+.rodape::before {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 1.2rem;
+}
+/* === SEÇÃO SOBRE MIM === */
+#sobre.card {
+    background-color: #52291c;
+    color: #F5F5F5;
+    padding: 80px 8% 0; 
+    margin-bottom: 0;
+}
+
+#sobre h2 {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 50px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+/* VARIÁVEIS DE COR */
+:root {
+    --fundo-geral:#E9C3A0;
+    --marrom-escuro: #5C2E0E;
+    --bege-claro: #FFF1D6;
+    --bege-medio: #F1C89B;
+    --texto-principal: #2B1B10;
+    --texto-secundario: #4A2F1A;
+    --destaque: #A55B2A;
+    --texto-sobre: #ffffff;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    /* Se você quiser aplicar o fundo geral, adicione aqui: */
+    /* background-color: var(--fundo-geral); */
+}
+
+section:last-of-type {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+/* === SEÇÃO SOBRE MIM === */
+
+#sobre h2 {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 50px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--texto-principal); /* Garante que o título use a cor principal */
+}
+
+/* === CONTAINER === */
+.sobre-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
+
+/* === GRID PRINCIPAL (Cards) === */
+
+/* GRID PRINCIPAL */
+section.grid {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px 20px;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 40px;
+}
+
+/* CARD */
+.card {
+    background-color: var(--bege-claro);
+    border: 10px solid var(--bege-medio);
+    padding: 25px 22px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    border-radius: 6px;
+}
+
+/* TÍTULO PRINCIPAL */
+.card h3 {
+    background-color: var(--marrom-escuro);
+    color: #fff;
+    text-align: center;
+    padding: 14px 10px;
+    font-size: 1.3rem;
+    margin-bottom: 18px;
+    letter-spacing: 1px;
+}
+
+/* SUBTÍTULOS */
+.card h4 {
+    margin-top: 22px;
+    margin-bottom: 10px;
+    font-size: 1.05rem;
+    color: var(--destaque);
+    border-bottom: 2px solid var(--destaque);
+    padding-bottom: 4px;
+}
+
+/* PARÁGRAFOS */
+.card p {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    margin-bottom: 14px;
+    color: var(--texto-secundario); /* Corrigido, usa texto secundário */
+}
+
+/* LISTAS */
+ul.clean {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 15px;
+}
+
+ul.clean li {
+    position: relative;
+    padding-left: 18px;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--texto-secundario); /* Garante que a lista use cor escura */
+}
+
+/* MARCADOR PERSONALIZADO */
+ul.clean li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--destaque);
+    font-weight: bold;
+}
+
+/* DESTAQUES (strong) - Regra global para os cards e outros textos que não são do "Sobre Mim" */
+strong {
+    color: var(--marrom-escuro);
+}
+
+
+/* === RESPONSIVO === */
+@media (max-width: 900px) {
+    .sobre-container {
+        flex-direction: column;
+    }
+
+    .sobre-texto,
+    .sobre-foto {
+        order: initial; /* No celular fica normal empilhado */
+    }
+    
+    .sobre-texto {
+        text-align: center; /* Mantém o texto justificado no desktop, mas centraliza no mobile */
+    }
+}
+
+/* === TEXTO (ESQUERDA) === */
+.sobre-texto {
+    flex: 1;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    text-align: justify;
+    order: 1; /* FORÇA ficar à esquerda */
+}
+
+/* 🟢 CORREÇÃO: Usando a variável escura para o texto ficar visível em fundo claro */
+.sobre-texto p {
+    margin-bottom: 22px;
+    color: var(--texto-sobre);
+}
+
+/* 🟢 CORREÇÃO: Usando a variável de destaque para o texto ficar na cor desejada */
+.sobre-texto strong {
+    color: var(--destaque); 
+}
+
+.sobre-texto h1 {
+    color:whit
+}
+
+.sobre-foto {
+    width: 280px; 
+    max-width: 100%;
+    height: 360px; 
+    object-fit: cover; 
+    border-radius: 12px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    order: 2;
+    display: block;
+    margin-bottom: 40px;
+}
+
+/* =================================== */
+/* === ESTILOS GALERIA COM EFEITO TAPE === */
+/* =================================== */
+
+/* Ajusta o grid para esta seção, se necessário, ou usa o grid principal */
+.galeria-tape {
+    /* Não precisa de padding-top grande se estiver logo abaixo de outra seção */
+    padding-top: 20px; 
+}
+
+.foto-tape {
+    /* O card precisa ser posicionado relativo para que a fita (tape) absoluta funcione */
+    position: relative;
+    /* Remove a borda e background padrão do .card para focar na foto */
+    background: none;
+    border: none;
+    padding: 0;
+    box-shadow: none;
+    /* Adiciona uma pequena inclinação sutil para dar um toque mais dinâmico */
+    transform: rotate(calc(var(--i) * 0.5deg - 1deg)); /* Variável --i será definida no HTML ou JS, mas aqui usamos uma rotação leve e fixa */
+}
+
+.foto-tape img {
+    /* Estilo da imagem principal */
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: cover;
+    border: 8px solid var(--bege-claro); /* Borda como se fosse a borda da foto */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 2px;
+}
+
+/* === ESTILO DA FITA ADESIVA === */
+
+.tape {
+    position: absolute;
+    width: 60px; /* Largura da fita */
+    height: 30px; /* Altura da fita */
+    background-color: rgba(255, 255, 255, 0.5); /* Fita semi-transparente */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+/* Fita no canto superior esquerdo */
+.top-left {
+    top: -15px; /* Sobe metade da altura para ficar 'colada' */
+    left: 20px;
+    transform: rotate(-10deg);
+}
+
+/* Fita no canto superior direito */
+.top-right {
+    top: -15px;
+    right: 20px;
+    transform: rotate(15deg);
+}
+
+/* Fita no canto inferior esquerdo */
+.bottom-left {
+    bottom: -15px;
+    left: 20px;
+    transform: rotate(-5deg);
+}
+
+/* Fita no canto inferior direito */
+.bottom-right {
+    bottom: -15px;
+    right: 20px;
+    transform: rotate(10deg);
+}
+
+/* =================================== */
+/* === ESTILOS SEÇÃO DE INTRODUÇÃO (CHAPÉU LATERAL) === */
+/* =================================== */
+
+.intro-content-duo {
+    /* Usa Flexbox para colocar os itens lado a lado */
+    display: flex;
+    /* Centraliza o conteúdo (texto e imagem) na horizontal */
+    justify-content: center;
+    /* Alinha os itens pela parte de cima */
+    align-items: flex-start;
+    gap: 50px; /* Espaço entre o texto e a imagem */
+    
+    /* Limita a largura do container principal para não esticar demais */
+    max-width: 1200px;
+    margin: 30px auto 60px auto; /* Centraliza o bloco e adiciona margem inferior */
+    padding: 0 20px; /* Padding para telas pequenas */
+}
+
+.intro-text-wrapper {
+    /* O texto ocupa mais espaço */
+    flex: 1.5;
+    /* Garante que o texto fique justificado (ou use o que for melhor para o seu design) */
+    text-align: justify;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--texto-secundario);
+}
+
+.intro-text-wrapper p {
+    margin-bottom: 20px;
+}
+
+.intro-image-wrapper {
+    /* A imagem ocupa menos espaço */
+    flex: 1;
+    /* Garante que a imagem não encolha muito e fique centralizada em seu espaço */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chapeu-lateral {
+    /* Define o tamanho máximo da imagem */
+    width: 100%;
+    max-width: 300px; /* Limita a largura máxima da imagem */
+    height: auto;
+    object-fit: contain;
+    
+    /* Efeito sutil de flutuação e sombra, opcional */
+    filter: drop-shadow(5px 5px 8px rgba(0,0,0,0.15));
+    transform: rotate(-3deg);
+}
+
+
+/* === RESPONSIVO para a introdução === */
+@media (max-width: 850px) {
+    .intro-content-duo {
+        /* No mobile, a imagem e o texto se empilham */
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .intro-text-wrapper {
+        /* Centraliza o texto no mobile e usa 100% da largura disponível */
+        text-align: center;
+        flex: auto;
+    }
+    
+    .chapeu-lateral {
+        /* Reduz o tamanho da imagem no mobile para não ocupar muito espaço */
+        max-width: 200px; 
+    }
+}

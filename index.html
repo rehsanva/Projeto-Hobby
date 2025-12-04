@@ -5,29 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hobbies Nordestinos </title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head>
+   </head>
 <body>
 
     <header class="cabecalho">
-        <div class="logo">🌵 Hobbies Nordestinos 🌵</div>
         <nav class="menu-principal">
+            <div class="logo">🌵 Hobbies Nordestinos 🌵</div>
             <ul>   
-                <li><a href="#cabecalho">Início</a></li>
-                <li><a href="#hobbies">O que são Hobbies?</a></li>
+                <li><a href="#hero">Início</a></li>
+                <li><a href="#hobbies">Informações</a></li>
                 <li><a href="#forro">Forró</a></li>
                 <li><a href="#cordel">Cordel</a></li>
                 <li><a href="#artesanato">Artesanato</a></li>
                 <li><a href="#sobre">Sobre mim</a></li>
             </ul>
-         
         </nav>
     </header>
 
     <main>
         
-        <section class="home">
-            <div class="hero-conteudo">
+        <section id="hero">
+                <div class="hero-conteudo">
                    <p>"Bem-vindo ao meu espaço dedicado aos hobbies que resgatam aquilo que a vida 
                     moderna tenta apagar: calma, presença e alegria. Em um tempo em que as 
                     telas tentam capturar cada segundo e nos afastam do que realmente importa, 
@@ -39,60 +37,85 @@
             </div>
         </section>
 
+        <section id="hobbies">
+            <input type="checkbox" id="toggle-hobbies" class="toggle-hobbies">
+            <div class="hobbies-container">
+                <label for="toggle-hobbies" class="hobbies-label">
+                    <h1> Oque são Hobbies?</h1>
+                </label>
+                <div class="hobbies-content">
+                    <p> Um hobby é uma atividade de lazer praticada por puro prazer, sem ser por obrigação 
+                        profissional ou financeira. É um passatempo feito no tempo livre para relaxar, 
+                        desestressar e trazer satisfação, como praticar esportes, ler, ouvir música, 
+                        jogar videogame ou cozinhar. </p>
+                </div>
+            </div>
+
+            <input type="checkbox" id="toggle-hobbies-2" class="toggle-hobbies">
+            <div class="hobbies-container">
+                <label for="toggle-hobbies-2" class="hobbies-label">
+                    <h1> Porque os Hobbies Nordestinos São Tão Especiais?</h1>
+                </label>
+                <div class="hobbies-content">
+                    <p> Os hobbies nordestinos são especiais porque carregam camadas de história, afeto e
+                        identidade que vão muito além da ideia de "passar o tempo". Eles existem como parte
+                        viva da cultura, moldados pela coletividade, pela memória e pelo jeito singular de 
+                        sentir o mundo. Cada prática carrega um pedaço do povo e um traço de sua força.</p>
+                    
+                    <div class="hobbies-item">
+                        <div class="hobbies-title">Preservação da Identidade Cultural</div>
+                        <p>Atividades como a literatura de cordel, o artesanato (em cerâmica, renda, etc.), 
+                        a música (forró, frevo, maracatu) e as danças típicas (quadrilha junina, bumba-meu-boi) 
+                        são formas de manter vivas as raízes e tradições da região.</p>
+                    </div>
+
+                    <div class="hobbies-item">
+                        <div class="hobbies-title">Expressão da Vida Cotidiana e Resiliência</div>
+                        <p>Muitas dessas práticas, como o artesanato ou a poesia popular, narram o cotidiano, as lutas, 
+                        a fé e a resiliência do povo nordestino, servindo como um registro histórico e social.</p>
+                    </div>
+
+                    <div class="hobbies-item">
+                        <div class="hobbies-title">Combate ao Preconceito</div>
+                        <p>Ao serem valorizadas, essas manifestações ajudam a combater estereótipos e o preconceito sofrido 
+                        pela região, mostrando a riqueza e a complexidade da cultura nordestina para o resto do Brasil e do mundo.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="cabecalho">
-            <h1>Hobbies Nordestinos</h1>
             <h2> Onde viver se confunde com celebrar</h2>
             <p> A vida no Nordeste não corre: ela dança, canta, trabalha com as mãos, respira 
                 poesia e transforma cada momento em cultura.</p>
             <p> Este site apresenta os hobbies mais marcantes da região e mostra como eles 
                 moldam a identidade, os laços e a alegria desse povo forte, acolhedor e vibrante.</p>
+
+            <h2 style="text-align: center; margin-top: 40px;">Onde viver se confunde com celebrar</h2>
+    
+    <div class="intro-content-duo">
+        
+        <div class="intro-text-wrapper">
+            <p>
+                A vida no Nordeste não corre: ela dança,
+                canta, trabalha com as mãos, respira poesia e
+                transforma cada momento em cultura.
+            </p>
+            <p>
+                Este site apresenta os hobbies mais
+                marcantes da região e mostra como eles
+                moldam a identidade, os laços e a alegria
+                desse povo forte, acolhedor e vibrante.
+            </p>
+        </div>
+
+        <div class="intro-image-wrapper">
+            <img src="img/luiz.jpg" alt="Chapéu de Couro Nordestino" class="chapeu-lateral">
+        </div>
+
+    </div>
         </section>
 
-        <section id="hobbies">
-            <div>
-                <h1> Oque são Hobbies?</h1>
-                <p> Um hobby é uma atividade de lazer praticada por puro prazer, sem ser por obrigação 
-                    profissional ou financeira. É um passatempo feito no tempo livre para relaxar, 
-                    desestressar e trazer satisfação, como praticar esportes, ler, ouvir música, 
-                    jogar videogame ou cozinhar. </p>
-                    
-            </div>
-
-            <div> 
-                <h1> Porque os Hobbies Nordestinos São Tão Especiais?</h1>
-                <p> Os hobbies nordestinos são especiais porque carregam camadas de história, afeto e
-                    identidade que vão muito além da ideia de “passar o tempo”. Eles existem como parte
-                    viva da cultura, moldados pela coletividade, pela memória e pelo jeito singular de 
-                    sentir o mundo. Cada prática carrega um pedaço do povo e um traço de sua força.</p>
-            
-                <div>
-                    <ol type="1">
-                        <li>Preservação da Identidade Cultural</li>
-                    </ol>
-                        <p>Atividades como a literatura de cordel, o artesanato (em cerâmica, renda, etc.), 
-                        a música (forró, frevo, maracatu) e as danças típicas (quadrilha junina, bumba-meu-boi) 
-                        são formas de manter vivas as raízes e tradições da região.</p>
-                    
-                </div>
-
-                <div>
-                    <ol type ="2">
-                        <li>Expressão da Vida Cotidiana e Resiliência</li>
-                    </ol>
-                    <p>Muitas dessas práticas, como o artesanato ou a poesia popular, narram o cotidiano, as lutas, 
-                    a fé e a resiliência do povo nordestino, servindo como um registro histórico e social.</p>
-                </div>
-
-                <div>
-                    <ol type="3">
-                        <li>Combate ao Preconceito</li>
-                    </ol>
-                    <p>Ao serem valorizadas, essas manifestações ajudam a combater estereótipos e o preconceito sofrido 
-                    pela região, mostrando a riqueza e a complexidade da cultura nordestina para o resto do Brasil e do mundo. </p>
-              
-                </div>
-            </div>
-        </section>
 
         <section class="grid" id="forro">
 
@@ -245,13 +268,34 @@
             </div>
         </section>    
 
+        <section class="grid galeria-tape">
+            <div class="card foto-tape">
+                    <img src="img/forro.jpg" alt="Casal dançando forró com fitas">
+                    <div class="tape top-right"></div>
+                    <div class="tape bottom-left"></div>
+            </div>
+            <div class="card foto-tape">
+                    <img src="img/cordel.jpg" alt="Gravura de cordel com fitas">
+                    <div class="tape top-left"></div>
+                    <div class="tape bottom-right"></div>
+            </div>
+            
+            <div class="card foto-tape">
+                <img src="img/artesanato.webp" alt="Artesanato regional com fitas">
+                <div class="tape top-left"></div>
+                <div class="tape bottom-right"></div>
+            </div>
+
+           
+
+            
+        </section>
         <section id="sobre" class="card">
             <h2>Sobre mim</h2>
 
             <div class="sobre-container">
-                <img src="https://via.placeholder.com/220x160.png?text=Foto+Maracaju" 
-                    alt="Foto em Aracaju" 
-                    class="sobre-foto">
+                <img src="img/Rebeca.jpg" alt="Foto em Aracaju" class="sobre-foto">
+
 
                 <div class="sobre-texto">
                     <p>
@@ -262,11 +306,10 @@
                         Foi ali que percebi que os hobbies daquela região não são apenas diversão; são como eu gosto de viver — com intensidade, afeto, simplicidade e verdade. Cada passo que dei naquela terra me mostrou que a vida pode ser mais humana, mais viva e mais bonita, e é por isso que esse site existe: para honrar tudo que o Nordeste me despertou.
                     </p>
 
-                    <a href="#galeria" class="cta">Ver fotos de Maracaju</a>
                 </div>
             </div>
         </section>
     </main>
 </body>
-<footer>2025 Hobbies Nordestinos - Todos os Direitos Reservados</footer>
+<footer class="rodape">2025 Hobbies Nordestinos - Todos os Direitos Reservados</footer>
 </html>
